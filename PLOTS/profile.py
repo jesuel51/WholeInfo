@@ -15,7 +15,14 @@ for k in range(1,p_tgyro+1):
     aLTe[k-1]=tglfout['out.tglf.localdump_'+str(k)]['RLTS_1']
     aLne[k-1]=tglfout['out.tglf.localdump_'+str(k)]['RLNS_1']
     s[k-1]=tglfout['out.tglf.localdump_'+str(k)]['SHAT_SA']
-imatch=1;
+#find the max a/LT&a/Ln for better visualization
+aLT_max=max([max(aLTi),max(aLTe),max(aLne)]);
+aLT_max=floor(aLT_max)+1
+aLT_min=min([min(aLTi),min(aLTe),min(aLne)]);
+aLT_min=floor(aLT_min)
+s_max=floor(max(s))+1
+s_min=floor(min(s))
+imatch=1; # 0: xlim 0~1; 1: xlim tgyro_rmin, tgyro_rmax
 figure(figsize=[20,10])
 fs1=24
 fs2=20
@@ -35,7 +42,8 @@ plot(array([rho_sparse[0],rho_sparse[1]]),array([0,0]),'-ko',linewidth=lw/2)
 if imatch==1:
     xlim([0,1])
     xticks(linspace(0,1.0,6),fontsize=fs2)
-ylim([0,4.5])
+#ylim([0,4.5])
+ylim([aLT_min,aLT_max])
 xticks(fontsize=fs2)
 yticks(fontsize=fs2)
 xlabel('$\\rho$',fontsize=fs1,family='serif')
@@ -49,7 +57,8 @@ yticks(fontsize=fs2)
 title('$T_e(keV)$',fontsize=fs1,family='serif')
 subplot(2,4,6)
 plot(rho_sparse,aLTe,'-ko',linewidth=lw)
-ylim([0,4.5])
+#ylim([0,4.5])
+ylim([aLT_min,aLT_max])
 #plot(array([0,1]),array([0,0]),'--k',linewidth=lw/2)
 plot(array([rho_sparse[0],rho_sparse[1]]),array([0,0]),'--k',linewidth=lw/2)
 if imatch==1:
@@ -68,7 +77,8 @@ yticks(fontsize=fs2)
 title('$n_e(10^{19}m^{-3})$',fontsize=fs1,family='serif')
 subplot(2,4,7)
 plot(rho_sparse,aLne,'-ko',linewidth=lw)
-ylim([0,4.5])
+#ylim([0,4.5])
+ylim([aLT_min,aLT_max])
 #plot(array([0,1]),array([0,0]),'--k',linewidth=lw/2)
 plot(array([rho_sparse[0],rho_sparse[1]]),array([0,0]),'--k',linewidth=lw/2)
 if imatch==1:
@@ -89,7 +99,8 @@ subplot(2,4,8)
 plot(rho_sparse,s,'-ko',linewidth=lw)
 #plot(array([rho_sparse[0],rho_sparse[1]]),array([0,0]),'--k',linewidth=lw/2)
 plot(array([0,1]),array([0,0]),'--g',linewidth=lw/2)
-ylim([-1,3])
+#ylim([-1,3])
+ylim([s_min,s_max])
 if imatch==1:
     xlim([0,1])
     xticks(linspace(0,1.0,6),fontsize=fs2)
