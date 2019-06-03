@@ -1,0 +1,39 @@
+{
+ "PHYSICS": {
+  "iGenEr": 0
+ },
+ "SETUP": {
+  "workDir": null,
+  "executable": null,
+  "pbs_queue": "short",
+  "num_nodes": 1,
+  "num_cores": 13,
+  "wall_time": "00:30:00"
+ },
+ "EXPERIMENT": {
+  "shot": null,
+  "time": null,
+  "device": "DIII-D",
+  "shots": null,
+  "times": null,
+  "runid": "sim1"
+ },
+ "REMOTE_SETUP": {
+  "serverPicker": null,
+  "workDir": null,
+  "server": null,
+  "tunnel": null
+ },
+ "MODULE": {
+  "ID": "WholeInfo",
+  "edited_by": "",
+  "date": "",
+  "contact": [
+   "xiangjian@hust.edu.cn"
+  ],
+  "defaultGUI": null,
+  "commit": "858aa3e5c3b6a4d87bdb924281f349a941008cc7",
+  "comment": ""
+ },
+ "DEPENDENCIES": {}
+}

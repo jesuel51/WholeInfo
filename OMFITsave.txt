@@ -1,0 +1,31 @@
+['INPUTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['INPUTS']['input.tgyro'] <-:-:-> OMFITgaCode <-:-:-> ./INPUTS/input.tgyro <-:-:-> {}
+['OUTPUTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['OUTPUTS']['Profiles_gen'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['OUTPUTS']['TGYRO'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['OUTPUTS']['TGYRO']['TGLF'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['OUTPUTS']['TGYRO']['GYRO'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['OUTPUTS']['TGYRO']['CGYRO'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['SCRIPTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['SCRIPTS']['profiles_gen.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/profiles_gen.py <-:-:-> {}
+['SCRIPTS']['inputgyro2cgyro.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/inputgyro2cgyro.py <-:-:-> {}
+['SCRIPTS']['tgyro_tglf.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/tgyro_tglf.py <-:-:-> {}
+['SCRIPTS']['tgyro_gyro.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/tgyro_gyro.py <-:-:-> {}
+['SCRIPTS']['main.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/main.py <-:-:-> {}
+['PLOTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['PLOTS']['view12.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/view12.py <-:-:-> {}
+['PLOTS']['source.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/source.py <-:-:-> {}
+['PLOTS']['fastion.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/fastion.py <-:-:-> {}
+['PLOTS']['profile.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/profile.py <-:-:-> {}
+['PLOTS']['printinfo.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/printinfo.py <-:-:-> {}
+['PLOTS']['mtm.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/mtm.py <-:-:-> {}
+['GUIS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['LIB'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['LIB']['OMFITlib_startup'] <-:-:-> OMFITpythonTask <-:-:-> ./LIB/OMFITlib_startup.py <-:-:-> {}
+['SETTINGS'] <-:-:-> OMFITsettings <-:-:-> ./SettingsNamelist.txt <-:-:-> {}
+['SETTINGS']['SETUP']['workDir'] <-:-:-> OMFITexpression <-:-:-> _"OMFITworkDir(root,'')" <-:-:-> {}
+['SETTINGS']['REMOTE_SETUP']['serverPicker'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=str(OMFITmodules[-2]['SETTINGS']['REMOTE_SETUP']['serverPicker'])\nexcept Exception:\n    return_variable='default'" <-:-:-> {}
+['SETTINGS']['REMOTE_SETUP']['workDir'] <-:-:-> OMFITexpression <-:-:-> _"OMFITworkDir(root,parent['serverPicker'])" <-:-:-> {}
+['SETTINGS']['REMOTE_SETUP']['server'] <-:-:-> OMFITexpression <-:-:-> _"SERVER[parent['serverPicker']]['server']" <-:-:-> {}
+['SETTINGS']['REMOTE_SETUP']['tunnel'] <-:-:-> OMFITexpression <-:-:-> _"SERVER[parent['serverPicker']]['tunnel']" <-:-:-> {}
+['help'] <-:-:-> OMFITascii <-:-:-> ./help.rst <-:-:-> {}
